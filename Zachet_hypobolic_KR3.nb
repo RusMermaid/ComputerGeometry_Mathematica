@@ -1,0 +1,652 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[     24912,        642]
+NotebookOptionsPosition[     24328,        624]
+NotebookOutlinePosition[     24727,        640]
+CellTagsIndexPosition[     24684,        637]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+   "\:0417\:0430\:0447\:0435\:0442\:043d\:0430\:044f", " ", 
+    "\:0417\:0430\:0434\:0430\:0447\:0430", " ", 
+    "\:041d\:043e\:043c\:0435\:0440", " ", "4"}], "*)"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+   "\:041d\:0430\:0440\:0438\:0441\:043e\:0432\:0430\:0442\:044c", " ", 
+    "\:0441\:0435\:0440\:0435\:0434\:0438\:043d\:043d\:044b\:0435", " ", 
+    "\:043f\:0435\:0440\:043f\:0435\:043d\:0434\:0438\:043a\:0443\:043b\:044f\
+\:0440\:044b", " ", "\:043a", " ", 
+    "\:0441\:0442\:043e\:0440\:043e\:043d\:0430\:043c", " ", 
+    "\:0442\:0440\:0435\:0443\:0433\:043e\:043b\:044c\:043d\:0438\:043a\:0430\
+", " ", "\:043d\:0430", " ", 
+    "\:043f\:043b\:043e\:0441\:043a\:043e\:0441\:0442\:0438", " ", 
+    "\:041b\:043e\:0431\:0430\:0447\:0435\:0432\:0441\:043a\:043e\:0433\:043e\
+", " ", "\:0432", " ", "\:043c\:043e\:0434\:0435\:043b\:0438", " ", 
+    RowBox[{
+    "\:0435\:0434", ".", " ", "\:043a\:0440\:0443\:0433\:0430", "."}]}], 
+   "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{"\:0422\:0440\:0435\:0431\:043e\:0432\:0430\:043d\:0438\:044f", ":", 
+    RowBox[{
+    "\:0412\:0435\:0440\:0448\:0438\:043d\:0430", " ", "\:0438", " ", 
+     "\:0441\:0442\:043e\:0440\:043e\:043d\:044b", " ", 
+     "\:0443\:0433\:043b\:0430", " ", "\:043c\:0435\:043d\:044f\:0442\:044c", 
+     " ", "\:0434\:0438\:043d\:0430\:043c\:0438\:0447\:0435\:0441\:043a\:0438\
+", " ", 
+     RowBox[{"(", 
+      RowBox[{
+      "\:0441", " ", "\:043f\:043e\:043c\:043e\:0449\:044c\:044e", " ", 
+       "Locator"}], ")"}]}]}], "*)"}]}]], "Input",
+ CellChangeTimes->{
+  3.954470212432488*^9},ExpressionUUID->"24543de9-139e-4e77-a958-\
+959c4456d849"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"g", "[", 
+    RowBox[{"z_", ",", "z00_"}], "]"}], ":=", 
+   FractionBox[
+    RowBox[{"z", "-", "z00"}], 
+    RowBox[{"1", "-", 
+     RowBox[{"z", " ", 
+      RowBox[{"Conjugate", "[", "z00", "]"}]}]}]]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"ginv", "[", 
+     RowBox[{"z_", ",", "z0_"}], "]"}], ":=", 
+    FractionBox[
+     RowBox[{"z", "+", "z0"}], 
+     RowBox[{"1", "+", 
+      RowBox[{"z", " ", 
+       RowBox[{"Conjugate", "[", "z0", "]"}]}]}]]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"function", "[", 
+    RowBox[{"z_", ",", "z0_"}], "]"}], ":=", 
+   FractionBox[
+    RowBox[{"1", "-", 
+     SqrtBox[
+      RowBox[{"1", "-", 
+       SuperscriptBox[
+        RowBox[{"Abs", "[", 
+         RowBox[{"g", "[", 
+          RowBox[{"z", ",", "z0"}], "]"}], "]"}], "2"]}]]}], 
+    SuperscriptBox[
+     RowBox[{"Abs", "[", 
+      RowBox[{"g", "[", 
+       RowBox[{"z", ",", "z0"}], "]"}], "]"}], "2"]]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"line", "[", 
+     RowBox[{"z1_", ",", " ", "z2_", ",", " ", "t_"}], "]"}], ":=", " ", 
+    RowBox[{"ginv", "[", 
+     RowBox[{
+      RowBox[{"t", " ", "*", 
+       RowBox[{"g", "[", 
+        RowBox[{"z2", ",", " ", "z1"}], "]"}]}], ",", " ", "z1"}], "]"}]}], 
+   ";"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{
+   "\:041f\:043e\:0441\:0442\:0440\:043e\:0435\:043d\:0438\:0435", " ", 
+    "\:0433\:0435\:043e\:0434\:0435\:0437\:0438\:0447\:0435\:0441\:043a\:043e\
+\:0439", " ", "\:0434\:0443\:0433\:0438"}], "*)"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"gg", "[", 
+    RowBox[{"z_", ",", "z0_"}], "]"}], ":=", 
+   RowBox[{"g", "[", 
+    RowBox[{
+     RowBox[{"g", "[", 
+      RowBox[{"z", ",", "z0"}], "]"}], ",", 
+     RowBox[{
+      RowBox[{"function", "[", 
+       RowBox[{"z", ",", "z0"}], "]"}], "*", " ", 
+      RowBox[{"g", "[", 
+       RowBox[{"z", ",", "z0"}], "]"}]}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"func", "[", 
+    RowBox[{"z_", ",", "z0_"}], "]"}], ":=", 
+   RowBox[{"\[ImaginaryI]", "*", 
+    RowBox[{"gg", "[", 
+     RowBox[{"z", ",", "z0"}], "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"result", "[", 
+     RowBox[{"z_", ",", "z0_", ",", "t_"}], "]"}], ":=", 
+    RowBox[{"ginv", "[", 
+     RowBox[{
+      RowBox[{"ginv", "[", 
+       RowBox[{
+        RowBox[{"t", "*", 
+         RowBox[{"func", "[", 
+          RowBox[{"z", ",", "z0"}], "]"}]}], ",", 
+        RowBox[{
+         RowBox[{"function", "[", 
+          RowBox[{"z", ",", "z0"}], "]"}], "*", 
+         RowBox[{"g", "[", 
+          RowBox[{"z", ",", "z0"}], "]"}]}]}], "]"}], ",", "z0"}], "]"}]}], 
+   ";"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{
+   "\:041f\:043e\:0441\:0442\:0440\:043e\:0435\:043d\:0438\:0435", " ", 
+    "\:0441\:0435\:0440\:0435\:0434\:0438\:043d\:043d\:043e\:0433\:043e", " ",
+     "\:043f\:0435\:0440\:043f\:0435\:043d\:0434\:0438\:043a\:0443\:043b\:044f\
+\:0440\:0430"}], "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Show", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Graphics", "[", 
+      RowBox[{"Circle", "[", "]"}], "]"}], ",", " ", 
+     RowBox[{
+     "(*", "\:0420\:0438\:0441\:043e\:0432\:0430\:043b\:043a\:0430", "*)"}], 
+     "\[IndentingNewLine]", 
+     RowBox[{"ParametricPlot", "[", 
+      RowBox[{
+       RowBox[{"With", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"Z1", "=", " ", 
+           RowBox[{"line", "[", 
+            RowBox[{
+             RowBox[{"Complex", "[", 
+              RowBox[{
+               RowBox[{
+               "p1", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], ",", 
+               RowBox[{
+               "p1", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}]}],
+               "]"}], ",", 
+             RowBox[{"Complex", "[", 
+              RowBox[{
+               RowBox[{
+               "p2", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], ",",
+                " ", 
+               RowBox[{
+               "p2", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}]}],
+               "]"}], ",", " ", "t"}], "]"}]}], "}"}], ",", " ", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Re", "[", "Z1", "]"}], ",", " ", 
+           RowBox[{"Im", "[", "Z1", "]"}]}], "}"}]}], "]"}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"t", ",", " ", "0", ",", " ", "1"}], "}"}], ",", " ", 
+       RowBox[{"PlotStyle", "->", "Thick"}], ",", 
+       RowBox[{"ColorFunction", "->", 
+        RowBox[{"Function", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"x", ",", "y", ",", "t"}], "}"}], ",", " ", 
+          RowBox[{"Blend", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"Cyan", ",", " ", "Pink", ",", "Red"}], "}"}], ",", 
+            RowBox[{"Min", "[", 
+             RowBox[{"1", ",", 
+              RowBox[{"Sqrt", "[", 
+               RowBox[{
+                RowBox[{"x", "^", "2"}], "+", 
+                RowBox[{"y", "^", "2"}]}], "]"}]}], "]"}]}], "]"}]}], "]"}]}],
+        ",", 
+       RowBox[{"ColorFunctionScaling", "->", "False"}]}], "]"}], ",", " ", 
+     "\[IndentingNewLine]", 
+     RowBox[{"ParametricPlot", "[", 
+      RowBox[{
+       RowBox[{"With", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"Z2", "=", " ", 
+           RowBox[{"line", "[", 
+            RowBox[{
+             RowBox[{"Complex", "[", 
+              RowBox[{
+               RowBox[{
+               "p1", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], ",", 
+               RowBox[{
+               "p1", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}]}],
+               "]"}], ",", 
+             RowBox[{"Complex", "[", 
+              RowBox[{
+               RowBox[{
+               "p3", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], ",", 
+               RowBox[{
+               "p3", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}]}],
+               "]"}], ",", " ", "t"}], "]"}]}], "}"}], ",", " ", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Re", "[", "Z2", "]"}], ",", " ", 
+           RowBox[{"Im", "[", "Z2", "]"}]}], "}"}]}], "]"}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"t", ",", " ", "0", ",", " ", "1"}], "}"}], ",", " ", 
+       RowBox[{"PlotStyle", "->", "Thick"}], ",", 
+       RowBox[{"ColorFunction", "->", 
+        RowBox[{"Function", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"x", ",", "y", ",", "t"}], "}"}], ",", " ", 
+          RowBox[{"Blend", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"Cyan", ",", " ", "Pink", ",", "Red"}], "}"}], ",", 
+            RowBox[{"Min", "[", 
+             RowBox[{"1", ",", 
+              RowBox[{"Sqrt", "[", 
+               RowBox[{
+                RowBox[{"x", "^", "2"}], "+", 
+                RowBox[{"y", "^", "2"}]}], "]"}]}], "]"}]}], "]"}]}], "]"}]}],
+        ",", 
+       RowBox[{"ColorFunctionScaling", "->", "False"}]}], "]"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"ParametricPlot", "[", 
+      RowBox[{
+       RowBox[{"With", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"Z3", "=", " ", 
+           RowBox[{"line", "[", 
+            RowBox[{
+             RowBox[{"Complex", "[", 
+              RowBox[{
+               RowBox[{
+               "p2", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], ",", 
+               RowBox[{
+               "p2", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}]}],
+               "]"}], ",", 
+             RowBox[{"Complex", "[", 
+              RowBox[{
+               RowBox[{
+               "p3", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], ",", 
+               RowBox[{
+               "p3", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}]}],
+               "]"}], ",", " ", "t"}], "]"}]}], "}"}], ",", " ", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Re", "[", "Z3", "]"}], ",", " ", 
+           RowBox[{"Im", "[", "Z3", "]"}]}], "}"}]}], "]"}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"t", ",", " ", "0", ",", " ", "1"}], "}"}], ",", " ", 
+       RowBox[{"PlotStyle", "->", "Thick"}], ",", 
+       RowBox[{"ColorFunction", "->", 
+        RowBox[{"Function", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"x", ",", "y", ",", "t"}], "}"}], ",", " ", 
+          RowBox[{"Blend", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"Cyan", ",", " ", "Pink", ",", "Red"}], "}"}], ",", 
+            RowBox[{"Min", "[", 
+             RowBox[{"1", ",", 
+              RowBox[{"Sqrt", "[", 
+               RowBox[{
+                RowBox[{"x", "^", "2"}], "+", 
+                RowBox[{"y", "^", "2"}]}], "]"}]}], "]"}]}], "]"}]}], "]"}]}],
+        ",", 
+       RowBox[{"ColorFunctionScaling", "->", "False"}]}], "]"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"ParametricPlot", "[", 
+      RowBox[{
+       RowBox[{"With", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"Z4", "=", " ", 
+           RowBox[{"result", "[", 
+            RowBox[{
+             RowBox[{"Complex", "[", 
+              RowBox[{
+               RowBox[{
+               "p2", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], ",", 
+               RowBox[{
+               "p2", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}]}],
+               "]"}], ",", 
+             RowBox[{"Complex", "[", 
+              RowBox[{
+               RowBox[{
+               "p1", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], ",", 
+               RowBox[{
+               "p1", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}]}],
+               "]"}], ",", "t"}], "]"}]}], "}"}], ",", " ", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Re", "[", "Z4", "]"}], ",", " ", 
+           RowBox[{"Im", "[", "Z4", "]"}]}], "}"}]}], "]"}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"t", ",", " ", 
+         RowBox[{"-", "1"}], ",", " ", "1"}], "}"}], ",", 
+       RowBox[{"PlotStyle", "->", "Dashed"}], ",", 
+       RowBox[{"ColorFunction", "->", 
+        RowBox[{"Function", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"x", ",", "y", ",", "t"}], "}"}], ",", " ", 
+          RowBox[{"Blend", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"Green", ",", "Pink", ",", " ", "Red"}], "}"}], ",", 
+            RowBox[{"Min", "[", 
+             RowBox[{"1", ",", 
+              RowBox[{"Sqrt", "[", 
+               RowBox[{
+                RowBox[{"x", "^", "2"}], "+", 
+                RowBox[{"y", "^", "2"}]}], "]"}]}], "]"}]}], "]"}]}], "]"}]}],
+        ",", 
+       RowBox[{"ColorFunctionScaling", "->", "False"}]}], "]"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"ParametricPlot", "[", 
+      RowBox[{
+       RowBox[{"With", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"Z5", "=", " ", 
+           RowBox[{"result", "[", 
+            RowBox[{
+             RowBox[{"Complex", "[", 
+              RowBox[{
+               RowBox[{
+               "p3", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], ",", 
+               RowBox[{
+               "p3", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}]}],
+               "]"}], ",", 
+             RowBox[{"Complex", "[", 
+              RowBox[{
+               RowBox[{
+               "p2", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], ",", 
+               RowBox[{
+               "p2", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}]}],
+               "]"}], ",", "t"}], "]"}]}], "}"}], ",", " ", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Re", "[", "Z5", "]"}], ",", " ", 
+           RowBox[{"Im", "[", "Z5", "]"}]}], "}"}]}], "]"}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"t", ",", " ", 
+         RowBox[{"-", "1"}], ",", " ", "1"}], "}"}], ",", 
+       RowBox[{"PlotStyle", "->", "Dashed"}], ",", 
+       RowBox[{"ColorFunction", "->", 
+        RowBox[{"Function", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"x", ",", "y", ",", "t"}], "}"}], ",", " ", 
+          RowBox[{"Blend", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"Green", ",", "Pink", ",", " ", "Red"}], "}"}], ",", 
+            RowBox[{"Min", "[", 
+             RowBox[{"1", ",", 
+              RowBox[{"Sqrt", "[", 
+               RowBox[{
+                RowBox[{"x", "^", "2"}], "+", 
+                RowBox[{"y", "^", "2"}]}], "]"}]}], "]"}]}], "]"}]}], "]"}]}],
+        ",", 
+       RowBox[{"ColorFunctionScaling", "->", "False"}]}], "]"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"ParametricPlot", "[", 
+      RowBox[{
+       RowBox[{"With", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"Z6", "=", " ", 
+           RowBox[{"result", "[", 
+            RowBox[{
+             RowBox[{"Complex", "[", 
+              RowBox[{
+               RowBox[{
+               "p1", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], ",", 
+               RowBox[{
+               "p1", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}]}],
+               "]"}], ",", 
+             RowBox[{"Complex", "[", 
+              RowBox[{
+               RowBox[{
+               "p3", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], ",", 
+               RowBox[{
+               "p3", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}]}],
+               "]"}], ",", "t"}], "]"}]}], "}"}], ",", " ", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Re", "[", "Z6", "]"}], ",", " ", 
+           RowBox[{"Im", "[", "Z6", "]"}]}], "}"}]}], "]"}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"t", ",", " ", 
+         RowBox[{"-", "1"}], ",", " ", "1"}], "}"}], ",", 
+       RowBox[{"PlotStyle", "->", "Dashed"}], ",", 
+       RowBox[{"ColorFunction", "->", 
+        RowBox[{"Function", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"x", ",", "y", ",", "t"}], "}"}], ",", " ", 
+          RowBox[{"Blend", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"Green", ",", "Pink", ",", " ", "Red"}], "}"}], ",", 
+            RowBox[{"Min", "[", 
+             RowBox[{"1", ",", 
+              RowBox[{"Sqrt", "[", 
+               RowBox[{
+                RowBox[{"x", "^", "2"}], "+", 
+                RowBox[{"y", "^", "2"}]}], "]"}]}], "]"}]}], "]"}]}], "]"}]}],
+        ",", 
+       RowBox[{"ColorFunctionScaling", "->", "False"}]}], "]"}]}], 
+    "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"p1", ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"0.8", ",", "0.4"}], "}"}]}], "}"}], ",", " ", "Locator"}], 
+    "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"p2", ",", " ", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "0.6"}], ",", " ", "0.2"}], "}"}]}], "}"}], ",", " ", 
+     "Locator"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"p3", ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"0.7", ",", 
+         RowBox[{"-", "0.6"}]}], "}"}]}], "}"}], ",", " ", "Locator"}], 
+    "}"}]}], "\[IndentingNewLine]", "]"}]}], "Input",
+ CellLabel->"In[64]:=",ExpressionUUID->"a4c1d4e7-9a53-4222-968c-74a973809bc0"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`p1$$ = {0.8, 
+    0.4}, $CellContext`p2$$ = {-0.6, 0.2}, $CellContext`p3$$ = {0.7, -0.6}, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`p1$$], {0.8, 0.4}}, Automatic, ControlType -> 
+      Locator}, {{
+       Hold[$CellContext`p2$$], {-0.6, 0.2}}, Automatic, ControlType -> 
+      Locator}, {{
+       Hold[$CellContext`p3$$], {0.7, -0.6}}, Automatic, ControlType -> 
+      Locator}}, Typeset`size$$ = {
+    360., {176.846833203125, 182.578766796875}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = True, 
+    Typeset`keyframeActionsQ$$ = False, Typeset`keyframeList$$ = {}}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`p1$$ = {0.8, 
+         0.4}, $CellContext`p2$$ = {-0.6, 0.2}, $CellContext`p3$$ = {
+         0.7, -0.6}}, "ControllerVariables" :> {}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$, Typeset`keyframeActionsQ$$, 
+        Typeset`keyframeList$$}, "Body" :> Show[
+        Graphics[
+         Circle[]], 
+        ParametricPlot[
+         With[{$CellContext`Z1 = $CellContext`line[
+             Complex[
+              Part[$CellContext`p1$$, 1], 
+              Part[$CellContext`p1$$, 2]], 
+             Complex[
+              Part[$CellContext`p2$$, 1], 
+              Part[$CellContext`p2$$, 2]], $CellContext`t]}, {
+           Re[$CellContext`Z1], 
+           Im[$CellContext`Z1]}], {$CellContext`t, 0, 1}, PlotStyle -> Thick, 
+         ColorFunction -> 
+         Function[{$CellContext`x, $CellContext`y, $CellContext`t}, 
+           Blend[{Cyan, Pink, Red}, 
+            Min[1, 
+             Sqrt[$CellContext`x^2 + $CellContext`y^2]]]], 
+         ColorFunctionScaling -> False], 
+        ParametricPlot[
+         With[{$CellContext`Z2 = $CellContext`line[
+             Complex[
+              Part[$CellContext`p1$$, 1], 
+              Part[$CellContext`p1$$, 2]], 
+             Complex[
+              Part[$CellContext`p3$$, 1], 
+              Part[$CellContext`p3$$, 2]], $CellContext`t]}, {
+           Re[$CellContext`Z2], 
+           Im[$CellContext`Z2]}], {$CellContext`t, 0, 1}, PlotStyle -> Thick, 
+         ColorFunction -> 
+         Function[{$CellContext`x, $CellContext`y, $CellContext`t}, 
+           Blend[{Cyan, Pink, Red}, 
+            Min[1, 
+             Sqrt[$CellContext`x^2 + $CellContext`y^2]]]], 
+         ColorFunctionScaling -> False], 
+        ParametricPlot[
+         With[{$CellContext`Z3 = $CellContext`line[
+             Complex[
+              Part[$CellContext`p2$$, 1], 
+              Part[$CellContext`p2$$, 2]], 
+             Complex[
+              Part[$CellContext`p3$$, 1], 
+              Part[$CellContext`p3$$, 2]], $CellContext`t]}, {
+           Re[$CellContext`Z3], 
+           Im[$CellContext`Z3]}], {$CellContext`t, 0, 1}, PlotStyle -> Thick, 
+         ColorFunction -> 
+         Function[{$CellContext`x, $CellContext`y, $CellContext`t}, 
+           Blend[{Cyan, Pink, Red}, 
+            Min[1, 
+             Sqrt[$CellContext`x^2 + $CellContext`y^2]]]], 
+         ColorFunctionScaling -> False], 
+        ParametricPlot[
+         With[{$CellContext`Z4 = $CellContext`result[
+             Complex[
+              Part[$CellContext`p2$$, 1], 
+              Part[$CellContext`p2$$, 2]], 
+             Complex[
+              Part[$CellContext`p1$$, 1], 
+              Part[$CellContext`p1$$, 2]], $CellContext`t]}, {
+           Re[$CellContext`Z4], 
+           Im[$CellContext`Z4]}], {$CellContext`t, -1, 1}, PlotStyle -> 
+         Dashed, ColorFunction -> 
+         Function[{$CellContext`x, $CellContext`y, $CellContext`t}, 
+           Blend[{Green, Pink, Red}, 
+            Min[1, 
+             Sqrt[$CellContext`x^2 + $CellContext`y^2]]]], 
+         ColorFunctionScaling -> False], 
+        ParametricPlot[
+         With[{$CellContext`Z5 = $CellContext`result[
+             Complex[
+              Part[$CellContext`p3$$, 1], 
+              Part[$CellContext`p3$$, 2]], 
+             Complex[
+              Part[$CellContext`p2$$, 1], 
+              Part[$CellContext`p2$$, 2]], $CellContext`t]}, {
+           Re[$CellContext`Z5], 
+           Im[$CellContext`Z5]}], {$CellContext`t, -1, 1}, PlotStyle -> 
+         Dashed, ColorFunction -> 
+         Function[{$CellContext`x, $CellContext`y, $CellContext`t}, 
+           Blend[{Green, Pink, Red}, 
+            Min[1, 
+             Sqrt[$CellContext`x^2 + $CellContext`y^2]]]], 
+         ColorFunctionScaling -> False], 
+        ParametricPlot[
+         With[{$CellContext`Z6 = $CellContext`result[
+             Complex[
+              Part[$CellContext`p1$$, 1], 
+              Part[$CellContext`p1$$, 2]], 
+             Complex[
+              Part[$CellContext`p3$$, 1], 
+              Part[$CellContext`p3$$, 2]], $CellContext`t]}, {
+           Re[$CellContext`Z6], 
+           Im[$CellContext`Z6]}], {$CellContext`t, -1, 1}, PlotStyle -> 
+         Dashed, ColorFunction -> 
+         Function[{$CellContext`x, $CellContext`y, $CellContext`t}, 
+           Blend[{Green, Pink, Red}, 
+            Min[1, 
+             Sqrt[$CellContext`x^2 + $CellContext`y^2]]]], 
+         ColorFunctionScaling -> False]], 
+      "Specifications" :> {{{$CellContext`p1$$, {0.8, 0.4}}, Automatic, 
+         ControlType -> Locator}, {{$CellContext`p2$$, {-0.6, 0.2}}, 
+         Automatic, ControlType -> 
+         Locator}, {{$CellContext`p3$$, {0.7, -0.6}}, Automatic, ControlType -> 
+         Locator}}, "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{415.1, {210.61725861816407`, 216.34919221191407`}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{3.954470235542778*^9},
+ CellLabel->"Out[71]=",ExpressionUUID->"9ea8864e-d61a-48b2-bd99-7ee17d6a7ed1"]
+}, Open  ]]
+},
+WindowSize->{2560, 1387},
+WindowMargins->{{Automatic, 1512}, {227, Automatic}},
+FrontEndVersion->"14.2 for Mac OS X ARM (64-bit) (March 16, 2025)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"05a679fe-0b3b-4174-aed4-7b405685fb68"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[554, 20, 1737, 37, 90, "Input",ExpressionUUID->"24543de9-139e-4e77-a958-959c4456d849"],
+Cell[CellGroupData[{
+Cell[2316, 61, 15517, 415, 548, "Input",ExpressionUUID->"a4c1d4e7-9a53-4222-968c-74a973809bc0"],
+Cell[17836, 478, 6476, 143, 443, "Output",ExpressionUUID->"9ea8864e-d61a-48b2-bd99-7ee17d6a7ed1"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
